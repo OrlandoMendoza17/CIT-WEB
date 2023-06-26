@@ -7,22 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#00aaff",
+      },
       fontSize: {
-        "sm": ["1.2rem", {
-          lineHeight: "1.8rem",
-        }],
-        "base": ["1.6rem", {
-          lineHeight: "1.95rem",
-        }],
-        "lg": ["1.8rem", {
-          lineHeight: "2.4rem",
-        }],
-        "xl": ["2.4rem", {
-          lineHeight: "3.2rem",
-        }],
-        "2xl": ["4rem", {
-          lineHeight: "4rem",
-        }],
+        "sm": ["1.2rem"],
+        "base": ["1.6rem"],
+        "lg": ["1.95rem"],
+        "xl": ["2.4rem"],
+        "2xl": ["3.2rem"],
       },
     },
   },

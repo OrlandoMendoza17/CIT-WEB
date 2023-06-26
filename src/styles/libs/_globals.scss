@@ -12,3 +12,11 @@ html{
   // font-family: "Roboto",sans-serif;
   // font-family: '__Roboto_5506ec', '__Roboto_Fallback_5506ec';
 }
+
+span, li{
+  font-size: inherit;
+}
+
+.horizontal-rule{
+  @apply my-10 w-20;
+}

@@ -1,0 +1,14 @@
+.MainDescription{
+  @apply flex items-center flex-col text-slate-400 ;
+  h5{
+    @apply text-black text-[20px] pb-4;
+  }
+  p{
+    @apply text-lg;
+  }
+  
+  &__focus{
+    @apply grid lg:grid-cols-2 gap-8;
+    justify-items: center;
+  }
+}
