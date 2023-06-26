@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+*{
+  @apply text-base;
+  // font-family: "Roboto",sans-serif;
+  // font-family: '__Roboto_5506ec', '__Roboto_Fallback_5506ec';
+}

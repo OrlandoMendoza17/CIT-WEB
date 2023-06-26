@@ -1,11 +1,15 @@
+import Hero from "@/components/pages/Hero";
+import Header from "@/components/widgets/Header";
 import Title from "@/components/widgets/Title";
 
 const Home = () => {
   return (
     <>
-      <Title/>
+      <Title />
+      <Header />
       <main className={``}>
-        <span>hola</span>
+        <Hero />
+        🐪 Ola k ase?
       </main>
     </>
   )

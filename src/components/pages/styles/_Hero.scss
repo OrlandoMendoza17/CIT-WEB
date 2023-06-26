@@ -1,0 +1,12 @@
+.Hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background: #012e44;
+  background: linear-gradient(0deg, #012e44 0%, #0276af 100%);
+  
+  canvas {
+    // position: absolute !important;
+  }
+}

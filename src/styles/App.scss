@@ -1,6 +1,7 @@
 @import "./libs/globals";
 
-html{
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
+// Components - Widgets
+@import "../components/pages/styles/Hero";
+
+// Components - Widgets
+@import "../components/widgets/styles/Header";
