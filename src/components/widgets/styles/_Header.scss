@@ -11,22 +11,58 @@
   &.onTop{
     @apply py-8;
     background-color: rgba(35, 44, 61, 0.25);
+    
+    a:active{
+      background-color: transparent !important;
+    }
+  }
+  
+  .burger-button{
+    @apply active:bg-slate-700  md:hidden rounded-xl p-6;
+    background-color: rgba(35, 44, 61, 0.25);
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    transition: .1s;
   }
   
   nav{
     
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
     gap: 20px;
     
+    @screen md{
+      grid-template-columns: auto 1fr auto;
+    }
+    
     .nav-links{
-      @apply font-medium pl-10 hidden md:grid;
-      grid-auto-flow: column;
-      align-content: center;
-      justify-content: start;
-      gap: 25px;
+      // @apply font-medium pl-10 hidden md:grid;
+      @apply font-medium grid md:grid-flow-col;
+      @apply py-4 md:py-0 md:px-10 rounded-xl;
+      @apply bg-secondary md:bg-transparent;
+      
+      gap: 15px;
+      position: fixed;
+      right: -100%;
+      bottom: 125px;
+      transition: .3s;
+      
+      &.opened{
+        right: 20px;
+      }
+      
+      @screen md {
+        width: auto;
+        position: unset;
+        gap: 25px;
+        justify-content: start;
+        align-content: center;
+      }
       
       a{
+        @apply pl-8 pr-10 md:p-0 active:bg-slate-700;
         display: grid;
         grid-template-columns: auto auto;
         gap: 5px;

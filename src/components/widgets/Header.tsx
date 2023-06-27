@@ -1,10 +1,12 @@
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaUsers, FaDiagramProject, FaHandshakeSimple, FaPhoneFlip } from "react-icons/fa6";
-import { FaInstagram, FaTwitter } from "react-icons/fa6";
+import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
 
 const Header = () => {
 
+  const [opened, setOpened] = useState<boolean>(false)
+  
   const links = [
     {
       label: "Nosotros",
@@ -16,11 +18,11 @@ const Header = () => {
       href: "/",
       Icon: <FaDiagramProject size={22} />,
     },
-    {
-      label: "Servicios",
-      href: "/",
-      Icon: <FaHandshakeSimple size={22} />,
-    },
+    // {
+    //   label: "Servicios",
+    //   href: "/",
+    //   Icon: <FaHandshakeSimple size={22} />,
+    // },
     {
       label: "Contacto",
       href: "/",
@@ -55,6 +57,8 @@ const Header = () => {
     }
   }, [])
 
+  const $navLinks = useRef<HTMLUListElement>(null)
+
   return (
     <header id="Header" className="Header onTop">
       <nav className="">
@@ -64,25 +68,23 @@ const Header = () => {
         </a>
         {/* Left */}
 
-        <ul className="nav-links">
-
+        <ul ref={$navLinks} className={`nav-links ${opened && "opened"}`}>
           {
             links.map(({ label, href, Icon }, i) =>
-              <li key={i} className="nav-item">
+              <li key={`nav-links-${i}`} className="nav-item">
                 <Link href={href}>
                   {Icon}<span>{label}</span>
                 </Link>
               </li>
             )
           }
-
         </ul>
 
         {/* Redes Sociales, No se Colapsa  */}
         <ul className="nav-social-links">
           {
             socialLinks.map(({ href, Icon }, i) =>
-              <li key={i} className="nav-item">
+              <li key={`nav-social-links-${i}`} className="nav-item">
                 <Link href={href}>
                   <Icon size={18} />
                 </Link>
@@ -91,6 +93,14 @@ const Header = () => {
           }
         </ul>
 
+        <button onClick={() => setOpened(!opened)} className="burger-button">
+          {
+            opened ?
+            <FaXmark size={20} />
+            :
+            <FaCode size={20} />
+          }
+        </button>
       </nav>
     </header>
   )

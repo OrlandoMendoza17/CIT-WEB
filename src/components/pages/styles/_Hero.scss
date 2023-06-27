@@ -1,10 +1,15 @@
 .Hero{
+  @apply px-6;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 100vh;
   background: #012e44;
   background: linear-gradient(0deg, #012e44 0%, #0276af 100%);
+  
+  @screen md{
+    height: 500px;
+  }
   
   canvas {
     // position: absolute !important;
