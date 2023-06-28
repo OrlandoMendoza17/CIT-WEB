@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import { FaUsers, FaDiagramProject, FaHandshakeSimple, FaPhoneFlip } from "react-icons/fa6";
+import { FaUsers, FaDiagramProject, FaMessage, FaPhoneFlip } from "react-icons/fa6";
 import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
 
 const Header = () => {
@@ -18,11 +18,11 @@ const Header = () => {
       href: "/",
       Icon: <FaDiagramProject size={22} />,
     },
-    // {
-    //   label: "Servicios",
-    //   href: "/",
-    //   Icon: <FaHandshakeSimple size={22} />,
-    // },
+    {
+      label: "Blog",
+      href: "/blog/post-prueba",
+      Icon: <FaMessage size={20} />,
+    },
     {
       label: "Contacto",
       href: "/",
@@ -63,9 +63,9 @@ const Header = () => {
     <header id="Header" className="Header onTop">
       <nav className="">
         {/* Brand */}
-        <a className="navbar-brand" href="${backURL}index.html">
+        <Link className="navbar-brand" href="/">
           <img width={80} src="https://i.imgur.com/Rn0NwIh.png" alt="logo de cit" />
-        </a>
+        </Link>
         {/* Left */}
 
         <ul ref={$navLinks} className={`nav-links ${opened && "opened"}`}>

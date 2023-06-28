@@ -43,8 +43,8 @@ const MainDescription = () => {
 
         <div className="goals">
           {
-            teamValues.map(({ name, description, Icon }) =>
-              <div className="item-grid text-center 2xs:text-start">
+            teamValues.map(({ name, description, Icon }, i) =>
+              <div key={i} className="item-grid text-center 2xs:text-start">
                 <Icon className="fill-primary hidden 2xs:block" />
                 <h5 className="font-bold">{name}</h5>
                 <p className="!text-[18px] font-light pb-6">{description}</p>

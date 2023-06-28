@@ -1,7 +1,7 @@
 .Header{
   @apply py-4 px-6;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   color: #ffffffd7;
   background-color: #232c3d;
   position: fixed;
@@ -65,7 +65,9 @@
         @apply pl-8 pr-10 md:p-0 active:bg-slate-700;
         display: grid;
         grid-template-columns: auto auto;
-        gap: 5px;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
       }
     }
     

@@ -4,7 +4,7 @@
   justify-content: center;
   
   & > .main_container {
-    @apply text-lg;    
+    @apply text-lg font-light;    
     max-width: 850px;
     
     *{
@@ -28,17 +28,44 @@
       @apply my-8;
     }
     
-    ul {
+    ul{
+      list-style: disc;
+    }
+    
+    ol{
+      list-style: decimal;
+    }
+    
+    img{
+      @apply pb-12;
+    }
+    
+    strong{
+      @apply font-bold;
+    }
+    
+    figure{
+      @apply pb-8;
+    }
+    
+    & > blockquote {
+      @apply px-12 py-1 border-primary;
+      display: block;
+      border-left-width: 10px;
+    }
+    
+    ul, ol {
       @apply py-8 pl-8 ml-12;
       
+      // list-style: initial;
+      
       li{
-        @apply pt-8;
+        @apply pt-4;
         
         &:first-of-type{
           @apply p-0;
         }
       }
     }
-    
   }
 }
