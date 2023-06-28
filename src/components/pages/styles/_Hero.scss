@@ -1,5 +1,6 @@
 .Hero{
   @apply px-6;
+  margin-top: -69px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,6 +9,7 @@
   background: linear-gradient(0deg, #012e44 0%, #0276af 100%);
   
   @screen md{
+    margin-top: 0;
     height: 500px;
   }
   

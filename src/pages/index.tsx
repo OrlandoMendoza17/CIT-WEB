@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Title />
-      <Header />
+      <Header transparent />
       <main className={``}>
         <Hero />
         <MainDescription />

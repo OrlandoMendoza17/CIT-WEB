@@ -1,21 +1,31 @@
 .Header{
   @apply py-4 px-6;
-  position: relative;
   z-index: 3;
   color: #ffffffd7;
   background-color: #232c3d;
-  position: fixed;
+  position: relative;
   width: 100%;
   transition: .3s;
   
-  &.onTop{
-    @apply py-8;
-    background-color: rgba(35, 44, 61, 0.25);
-    
-    a:active{
-      background-color: transparent !important;
+  @media screen and (max-width: 768px) {
+    &.transparent{
+      background-color: rgba(35, 44, 61, 0.25);
     }
   }
+  
+  @screen md{
+    position: fixed;
+    
+    &.onTop{
+      @apply py-8;
+      background-color: rgba(35, 44, 61, 0.25);
+      
+      a:active{
+        background-color: transparent !important;
+      }
+    }
+  }
+  
   
   .burger-button{
     @apply active:bg-slate-700  md:hidden rounded-xl p-6;
@@ -27,6 +37,15 @@
   }
   
   nav{
+    
+    .navbar-brand img{
+      // max-width: 40px; 
+      max-width: 80px; 
+      
+      @screen md{
+        max-width: 80px; 
+      }
+    }
     
     display: grid;
     grid-template-columns: auto auto;

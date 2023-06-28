@@ -3,7 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaUsers, FaDiagramProject, FaMessage, FaPhoneFlip } from "react-icons/fa6";
 import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
 
-const Header = () => {
+
+type Props = {
+  transparent?: boolean,
+}
+
+const Header = ({transparent = false}: Props) => {
 
   const [opened, setOpened] = useState<boolean>(false)
   
@@ -60,11 +65,11 @@ const Header = () => {
   const $navLinks = useRef<HTMLUListElement>(null)
 
   return (
-    <header id="Header" className="Header onTop">
+    <header id="Header" className={`Header ${transparent && "transparent"} onTop`}>
       <nav className="">
         {/* Brand */}
         <Link className="navbar-brand" href="/">
-          <img width={80} src="https://i.imgur.com/Rn0NwIh.png" alt="logo de cit" />
+          <img src="https://i.imgur.com/Rn0NwIh.png" alt="logo de cit" />
         </Link>
         {/* Left */}
 

@@ -1,7 +1,7 @@
 .PostHero{
   @apply pb-6 px-4 bg-slate-500;
   position: relative;
-  height: calc(143px + 68px);
+  min-height: 250px;
   
   display: grid;
   justify-content: center;
@@ -9,7 +9,7 @@
   grid-template-columns: minmax(auto, 850px);
   
   @screen md{
-    height: calc(350px + 68px);
+    min-height: calc(350px + 68px);
   }
   
   // background-image: ;
