@@ -1,0 +1,39 @@
+.PostHero{
+  @apply pb-6 bg-slate-500;
+  height: calc(350px + 68px);
+  
+  display: grid;
+  justify-content: center;
+  align-content: flex-end;
+  grid-template-columns: minmax(auto, 850px);
+  
+  & > .main_container{
+    width: 100%;
+    
+    h1{
+      @apply text-white font-bold text-xl mb-4;
+    }
+    
+    .user{
+      @apply text-white font-bold;
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      
+      img{
+        @apply bg-slate-400;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+      }
+      a{
+        font-size: 1.8rem;
+      }
+      small{
+        @apply text-[1.4rem] font-normal;
+      }
+    }
+  }
+}
