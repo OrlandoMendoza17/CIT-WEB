@@ -1,0 +1,44 @@
+.PostContent{
+  @apply pt-6 pb-10 px-4;
+  display: flex;
+  justify-content: center;
+  
+  & > .main_container {
+    @apply text-lg;    
+    max-width: 850px;
+    
+    *{
+      font-size: inherit;
+    }
+    
+    h2{
+      @apply text-[2.2rem] font-bold;
+      @apply border-b border-slate-300;
+    }
+    
+    h3{
+      @apply text-[2rem] font-bold;
+    }
+    
+    a{
+      @apply text-primary font-bold;
+    }
+    
+    p{
+      @apply my-8;
+    }
+    
+    ul {
+      @apply py-8 pl-8 ml-12;
+      
+      li{
+        @apply pt-8;
+        
+        &:first-of-type{
+          @apply p-0;
+        }
+      }
+    }
+    
+  }
+}
