@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {FormEventHandler} from 'react'
 
 const PostContent = () => {
   return (
     <section className="PostContent">
-      <div className="main_container">
+      <div className="main_container px-4">
         <p>Aprender <a href="https://platzi.com/blog/que-es-html-css-javascript/" target="_blank" rel="noopener">qué es HTML</a> y cómo usarlo es clave cuando quieres entrar al mundo del desarrollo web. Es duro al inicio, pero el esfuerzo vale la pena una vez que llegas a la meta de convertirte en desarrollador o desarrolladora web.</p>
         <p><strong>En HTML la gran mayoría del tiempo te la pasarás usando etiquetas</strong>. Tú y yo sabemos que son DEMASIADAS las que existen, y <strong>es casi imposible aprendernos todas de memoria</strong>, así que te preparamos un regalo que te va a gustar. 💚</p>
         <h2>Guía definitiva: etiquetas HTML esenciales</h2>

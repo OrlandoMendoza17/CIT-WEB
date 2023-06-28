@@ -37,26 +37,34 @@
     h1{
       @apply text-white font-bold text-xl mb-4;
     }
-    
-    .user{
+    .post_info{
       @apply text-white font-bold;
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: flex-start;
+      display: flex;
       align-items: center;
-      gap: 10px;
+      flex-wrap: wrap;
       
-      img{
-        @apply bg-slate-400;
-        width: 30px;
-        height: 30px;
-        border-radius: 100%;
+      .user{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        
+        img{
+          @apply bg-slate-400;
+          width: 30px;
+          height: 30px;
+          border-radius: 100%;
+        }
+        a{
+          font-size: 1.8rem;
+        }
       }
-      a{
-        font-size: 1.8rem;
-      }
-      small{
-        @apply text-[1.4rem] font-normal;
+      .created_at{
+        @apply ml-4;
+        small{
+          @apply text-[1.4rem] font-normal;
+        }
       }
     }
   }
