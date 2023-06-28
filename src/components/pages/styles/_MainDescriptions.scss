@@ -14,13 +14,20 @@
     
     .item-grid{
       display: grid;
-      grid-template-columns: auto 1fr;
       align-items: center;
       column-gap: 20px;
       row-gap: 10px;
       
+      @screen 2xs {
+        grid-template-columns: auto 1fr;
+        
+        p{
+          grid-column: 2 / 3;
+        }
+      }
+      
       p{
-        grid-column: 2 / 3;
+        @apply pb-16;
       }
     }
   }

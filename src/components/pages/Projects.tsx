@@ -55,7 +55,7 @@ const Projects = () => {
 
       <hr className="horizontal-rule border-primary" />
 
-      <p className="text-center w-responsive mx-auto mb-20 w-[75%]">Nuestros integrantes se encuentran  constantemente en el desarrollo de nuevos proyectos de indole tecnológica lo cual les permite progresat y afinar sus habilidades dentro del campo laboral.</p>
+      <p className="text-center w-responsive mb-20 md:w-[75%]">Nuestros integrantes se encuentran  constantemente en el desarrollo de nuevos proyectos de indole tecnológica lo cual les permite progresat y afinar sus habilidades dentro del campo laboral.</p>
 
       <div className="grid md:grid-cols-2 gap-8">
 
@@ -63,6 +63,7 @@ const Projects = () => {
           proyects.map(({ title, description, href, image, Icon }, index) =>
             <article key={`project-item-${index}`} className={`Projects__item`} style={{ backgroundImage: `url(${image})` }}>
               <div className="Projects__overlay">
+                
                 <h6 className="Projects__item--title">
                   <Icon className="fill-primary inline-block mr-2" size={30} />
                   <span>{title}</span>

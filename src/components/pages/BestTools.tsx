@@ -40,7 +40,7 @@ const BestTools = () => {
   ]
 
   return (
-    <section id="herramientas" className="BestTools flex items-center flex-col my-5 p-20">
+    <section id="herramientas" className="BestTools flex items-center flex-col my-5 py-20 px-10 md:px-20">
       <h2 className="font-bold text-2xl text-primary text-center">Mejores Herramientas!</h2>
       <hr className="horizontal-rule" />
       <p className="text-center font-medium text-lg text-slate-500 pt-2 pb-24 mb-2">En nuestro equipo tenemos gente con amplia experiencia en diversas Herramientas informáticas</p>

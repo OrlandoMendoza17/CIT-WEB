@@ -2,8 +2,27 @@ import React from 'react'
 import { FaShare } from 'react-icons/fa6'
 
 const MainDescription = () => {
+
+  const teamValues = [
+    {
+      name: "Misión",
+      description: "Desarrollar soluciones integrales basadas en medios tecnológicos, innovadores, ecológicos y de bajo impacto económico que solventen problematicas de la sociedad.",
+      Icon: FaShare,
+    },
+    {
+      name: "Visión",
+      description: "Ser reconocido por la sociedad como el equipo referente de P.I. de la UNITEC para las búsqueda y solución de problemas basados en texcnologías con una buena relación costo-servicio.",
+      Icon: FaShare,
+    },
+    {
+      name: "Objetivo General",
+      description: "Conformar un equipo multidisciplinario, que basado en las ultimas tecnologias pueda diseñar, crear e implementar soluciones en el área técnica apoyados en la innovación, de forma ecológica y con el menor costo posible a ser aplicados a las sociedad.",
+      Icon: FaShare,
+    },
+  ]
+
   return (
-    <section id="main-description" className="MainDescription my-5 p-20">
+    <section id="main-description" className="MainDescription my-5 py-20 px-10 md:px-20">
 
       {/* Section heading */}
       <h2 className="text-center font-bold text-2xl text-primary">¿Por qué es tan GENIAL?</h2>
@@ -23,31 +42,17 @@ const MainDescription = () => {
         </div>
 
         <div className="goals">
-          <div className="item-grid">
-            <FaShare className="fill-primary" />
-            <h5 className="font-bold">Misión</h5>
-            <p className="!text-[18px] font-light pb-6">Desarrollar soluciones integrales basadas en medios tecnológicos, innovadores,
-              ecológicos y de bajo impacto económico que solventen problematicas de la sociedad.</p>
-          </div>
-
-          <div className="item-grid">
-            <FaShare className="fill-primary" />
-            <h5 className="font-bold">Visión</h5>
-            <p className="!text-[18px] font-light pb-6">Ser reconocido por la sociedad como el equipo referente de P.I. de la UNITEC para las
-              búsqueda y solución de problemas basados en texcnologías con una buena relación costo-servicio.</p>
-          </div>
-
-          <div className="item-grid">
-            <FaShare className="fill-primary"/>
-            <h5 className="font-bold">Objetivo General</h5>
-            <p className="!text-[18px] font-light pb-6">Conformar un equipo multidisciplinario, que basado en las ultimas tecnologias pueda
-              diseñar, crear e implementar soluciones en el área técnica apoyados en la innovación, de forma ecológica y
-              con el menor costo posible a ser aplicados a las sociedad.</p>
-          </div>
+          {
+            teamValues.map(({ name, description, Icon }) =>
+              <div className="item-grid text-center 2xs:text-start">
+                <Icon className="fill-primary hidden 2xs:block" />
+                <h5 className="font-bold">{name}</h5>
+                <p className="!text-[18px] font-light pb-6">{description}</p>
+              </div>
+            )
+          }
         </div>
-
       </div>
-
     </section>
   )
 }
