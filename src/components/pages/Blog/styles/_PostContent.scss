@@ -24,7 +24,7 @@
       @apply text-primary font-bold;
     }
     
-    p{
+    & > p{
       @apply my-8;
     }
     
@@ -48,7 +48,7 @@
       @apply pb-8;
     }
     
-    & > blockquote {
+    blockquote {
       @apply px-12 py-1 border-primary;
       display: block;
       border-left-width: 10px;

@@ -1,11 +1,9 @@
-// import './styles.scss'
-
+import React from 'react'
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import React from 'react'
 import MenuBar from './MenuBar'
 
 
@@ -13,7 +11,7 @@ const TextEditor = () => {
   const editor = useEditor({
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
-      // TextStyle.configure({ types: [ListItem.name] }),
+      TextStyle,
       StarterKit.configure({
         bulletList: {
           keepMarks: true,
