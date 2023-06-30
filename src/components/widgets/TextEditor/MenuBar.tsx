@@ -14,9 +14,6 @@ type Props = {
 }
 
 const MenuBar = ({ editor }: Props) => {
-  if (!editor) {
-    return null
-  }
 
   const addImage = useCallback(() => {
     const url = window.prompt('URL')
@@ -26,6 +23,10 @@ const MenuBar = ({ editor }: Props) => {
     }
   }, [editor])
 
+  if (!editor) {
+    return null
+  }
+  
   return (
     <div className="MenuBar">
       
@@ -131,6 +132,7 @@ const MenuBar = ({ editor }: Props) => {
       </button> */}
 
       <button
+        title="Paragraph"
         onClick={() => editor.chain().focus().setParagraph().run()}
         className={`button-item ${editor.isActive('paragraph') ? "active" : "disactive"}`}
       >

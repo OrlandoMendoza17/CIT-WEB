@@ -7,7 +7,7 @@ import React from 'react'
 const Post = () => {
   return (
     <>
-      <Header />
+      <Header position="relative" />
       <main>
         <PostHero />
         <PostContent />
