@@ -1,0 +1,11 @@
+.MenuBar{
+  @apply mb-4 p-4 flex flex-wrap items-center border-primary border-x;
+  
+  &__button-group{
+    @apply  px-4;
+    
+    &:last-of-type{
+      @apply border-none;
+    }
+  }
+}

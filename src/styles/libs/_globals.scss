@@ -20,3 +20,68 @@ span, li{
 .horizontal-rule{
   @apply my-10 w-20;
 }
+
+pre {
+  @apply my-16;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+  // background: #282c34;
+  background-color: #1e1e1e;
+  color: #FFF;
+  font-family: 'JetBrainsMono', monospace;
+  // font-family: Consolas, Menlo, Monaco, source-code-pro, monospace;
+  font-size: 1.4rem !important;
+  
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  code {
+    // color: inherit;
+    padding: 0;
+    background: none;
+    font-size: inherit !important;
+  }
+}
+
+code{
+  &.lenguaje-javascript{
+    .hljs-built_in{
+      @apply text-sky-400;
+    }
+    .hljs-comment{
+      @apply text-green-800;
+    }
+    .hljs-keyword, .hljs-literal{
+      @apply text-sky-600;
+    }
+    .hljs-attr{
+      @apply text-sky-400;
+    }
+    .hljs-number{
+      @apply text-yellow-400;
+    }
+    .hljs-string{
+      @apply text-amber-600;
+    }
+    .hljs-variable.language_{
+      @apply text-sky-400;
+    }
+    .function_{
+      @apply text-yellow-300;
+    }
+  }
+  &.lenguaje-css{
+    .hljs-selector-class,
+    .hljs-selector-tag,
+    {
+      @apply text-amber-400;
+    }
+    .hljs-attribute{
+      @apply text-sky-300;
+    }
+    .hljs-number{
+      @apply text-lime-200;
+    }
+    .hljs-meta{
+      @apply text-sky-600;
+    }
+  }
+}
