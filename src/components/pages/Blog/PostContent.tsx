@@ -1,5 +1,4 @@
-import TextEditor from '@/components/widgets/TextEditor/TextEditor'
-import React, {FormEventHandler} from 'react'
+import React from 'react'
 
 const PostContent = () => {
   return (

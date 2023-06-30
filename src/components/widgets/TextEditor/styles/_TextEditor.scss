@@ -1,7 +1,13 @@
 /* Basic editor styles */
-.ProseMirror {
-  @apply p-4;
 
+.TextEditor{
+  @apply overflow-hidden rounded-2xl border-sky-800 mb-12;
+}
+
+.ProseMirror {
+  @apply py-8 px-8;
+  min-height: 250px;
+  outline: none;
   code {
     background-color: rgba(#616161, 0.1);
     color: #616161;

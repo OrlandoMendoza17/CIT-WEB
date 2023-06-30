@@ -4,14 +4,20 @@ import { FaUsers, FaDiagramProject, FaMessage, FaPhoneFlip } from "react-icons/f
 import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
 
 
-type Props = {
-  transparent?: boolean,
+const types = {
+  relative: "relative",
+  fixed: "md:fixed",
 }
 
-const Header = ({transparent = false}: Props) => {
+type Props = {
+  transparent?: boolean,
+  position: "fixed" | "relative"
+}
+
+const Header = ({ position, transparent = false }: Props) => {
 
   const [opened, setOpened] = useState<boolean>(false)
-  
+
   const links = [
     {
       label: "Nosotros",
@@ -50,22 +56,26 @@ const Header = ({transparent = false}: Props) => {
     const TO_OF_THE_PAGE = 0
     const $header = document.getElementById('Header')
     const style = "onTop"
-
-    if ($header) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY === TO_OF_THE_PAGE) {
-          $header.classList.add(style)
-        } else {
-          $header.classList.remove(style)
-        }
-      })
+    const fixed = $header?.className.includes("fixed")
+    
+    if (fixed) {
+      debugger
+      if ($header) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY === TO_OF_THE_PAGE) {
+            $header.classList.add(style)
+          } else {
+            $header.classList.remove(style)
+          }
+        })
+      }
     }
   }, [])
 
   const $navLinks = useRef<HTMLUListElement>(null)
 
   return (
-    <header id="Header" className={`Header ${transparent && "transparent"} onTop`}>
+    <header id="Header" className={`Header ${types[position]} ${transparent && "transparent"} onTop`}>
       <nav className="">
         {/* Brand */}
         <Link className="navbar-brand" href="/">
@@ -101,9 +111,9 @@ const Header = ({transparent = false}: Props) => {
         <button onClick={() => setOpened(!opened)} className="burger-button">
           {
             opened ?
-            <FaXmark size={20} />
-            :
-            <FaCode size={20} />
+              <FaXmark size={20} />
+              :
+              <FaCode size={20} />
           }
         </button>
       </nav>

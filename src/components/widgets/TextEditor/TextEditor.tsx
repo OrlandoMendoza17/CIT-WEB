@@ -40,24 +40,7 @@ const TextEditor = () => {
       })
     ],
     content: `
-    <h2>
-        Hi there,
-      </h2>
-      <p>
-        this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-      </p>
-      <ul>
-        <li>
-          That’s a bullet list with one …
-        </li>
-        <li>
-          … or two list items.
-        </li>
-      </ul>
-      <p>
-        Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-      </p>
-      <pre><code class="language-javascript">for (var i=1; i <= 20; i++)
+    <h2>Hi there,</h2><p></p><p>this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:</p><ul><li><p>That’s a bullet list with one …</p></li><li><p>… or two list items.</p></li></ul><blockquote><p>Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block: 🖖😎</p></blockquote><p></p><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/02/220218163634-freddy-vega-2-okok-full-169.jpg?quality=100&amp;strip=info"><pre><code class="lenguaje-javascript">for (var i=1; i &lt;= 20; i++)
       {
         if (i % 15 == 0)
           console.log("FizzBuzz");
@@ -67,15 +50,7 @@ const TextEditor = () => {
           console.log("Buzz");
         else
           console.log(i);
-      }</code></pre>
-      <p>
-        I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-      </p>
-      <blockquote>
-        Wow, that’s amazing. Good work, boy! 👏
-        <br />
-        — Mom
-      </blockquote>
+      }</code></pre><p>I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.</p><p></p><img src="https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/robert-downey-jr.-improviso-escena-iron-man-decisiva-universo-marvel/138148094-1-esl-ES/Robert-Downey-Jr.-improviso-una-escena-de-Iron-Man-que-fue-decisiva-para-el-Universo-Marvel.jpg"><p></p>
     `,
   })
 
@@ -83,11 +58,11 @@ const TextEditor = () => {
 
   return (
     <div>
-      <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
-      <div dangerouslySetInnerHTML={{ __html: editor?.getHTML() || "" }}>
-
+      <div className="TextEditor">
+        <MenuBar editor={editor} />
+        <EditorContent editor={editor} />
       </div>
+      {/* <div dangerouslySetInnerHTML={{ __html: editor?.getHTML() || "" }}></div> */}
     </div>
   )
 }

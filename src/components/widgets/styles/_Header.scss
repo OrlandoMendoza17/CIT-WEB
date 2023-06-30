@@ -2,10 +2,9 @@
   @apply py-4 px-6;
   z-index: 3;
   color: #ffffffd7;
-  background-color: #232c3d;
-  position: relative;
   width: 100%;
   transition: .3s;
+  background-color: #232c3d;
   
   @media screen and (max-width: 768px) {
     &.transparent{
@@ -14,7 +13,7 @@
   }
   
   @screen md{
-    position: fixed;
+    // position: fixed;
     
     &.onTop{
       @apply py-8;
@@ -26,6 +25,9 @@
     }
   }
   
+  &.relative{
+    background-color: #232c3d;
+  }
   
   .burger-button{
     @apply active:bg-slate-700  md:hidden rounded-xl p-6;

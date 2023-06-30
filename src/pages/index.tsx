@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Title />
-      <Header transparent />
+      <Header position="fixed" transparent />
       <main className={``}>
         <Hero />
         <MainDescription />
