@@ -1,13 +1,14 @@
-import { Editor, EditorContent, useEditor } from '@tiptap/react'
+import { Editor, useEditor } from '@tiptap/react'
 import { FaBold, FaItalic, FaStrikethrough, FaCode } from "react-icons/fa6";
 import { FaListUl, FaListOl, FaQuoteRight, FaParagraph } from "react-icons/fa6";
-import { FaArrowRotateLeft, FaArrowRotateRight } from "react-icons/fa6";
+import { FaArrowRotateLeft, FaArrowRotateRight, FaYoutube } from "react-icons/fa6";
 import { LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6, } from "react-icons/lu";
-import { BiCodeBlock } from "react-icons/bi";
+import { BiCodeBlock, BiLinkAlt } from "react-icons/bi";
 import { BsFillFileEarmarkBreakFill } from "react-icons/bs";
 import { GoHorizontalRule } from "react-icons/go";
 import { FaImage } from "react-icons/fa";
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
+import { IoLinkSharp, IoUnlinkSharp } from "react-icons/io5";
 
 type Props = {
   editor: Editor | null,
@@ -23,13 +24,45 @@ const MenuBar = ({ editor }: Props) => {
     }
   }, [editor])
 
+  const addYoutubeVideo = () => {
+    const url = prompt('Enter YouTube URL')
+
+    if (url) {
+      editor?.commands.setYoutubeVideo({
+        src: url,
+      })
+    }
+  }
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor?.getAttributes('link').href
+    const url = window.prompt('URL', previousUrl)
+
+    // cancelled
+    if (url === null) {
+      return
+    }
+
+    // empty
+    if (url === '') {
+      editor?.chain().focus().extendMarkRange('link').unsetLink()
+        .run()
+
+      return
+    }
+
+    // update link
+    editor?.chain().focus().extendMarkRange('link').setLink({ href: url })
+      .run()
+  }, [editor])
+
   if (!editor) {
     return null
   }
-  
+
   return (
     <div className="MenuBar">
-      
+
       {/*Button-group"> */}
       <button
         title="Bold"
@@ -160,13 +193,6 @@ const MenuBar = ({ editor }: Props) => {
         <FaQuoteRight />
       </button>
       <button
-        title="Image"
-        onClick={addImage}
-        className={`button-item ${editor.isActive('image') ? "active" : "disactive"}`}
-      >
-        <FaImage />
-      </button>
-      <button
         title="Code Block"
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         className={`button-item ${editor.isActive('codeBlock') ? "active" : "disactive"}`}
@@ -175,50 +201,89 @@ const MenuBar = ({ editor }: Props) => {
       </button>
 
       <div className="divider"></div>
-      
+      {
+        editor.isActive('link') ?
+          <button
+            title="Unlink"
+            onClick={() => editor.chain().focus().unsetLink().run()}
+            className={`button-item active`}
+          >
+            <IoUnlinkSharp />
+          </button>
+          :
+          <button
+            title="Link"
+            onClick={setLink}
+            className={`button-item`}
+          >
+            <IoLinkSharp />            
+          </button>
+      }
+
+
+      <button
+        title="Image"
+        onClick={addImage}
+        className={`button-item ${editor.isActive('image') ? "active" : "disactive"}`}
+      >
+        <FaImage />
+      </button>
+
+      <button
+        title="Set YouTube video"
+        onClick={addYoutubeVideo}
+        className={`button-item ${"disactive"}`}
+      >
+        <FaYoutube />
+      </button>
+
+      <div className="divider"></div>
+
       <button
         title="Horizontal Rule"
         className={`button-item ${"disactive"}`}
         onClick={() => editor.chain().focus().setHorizontalRule().run()}>
         <GoHorizontalRule />
       </button>
+
       <button
         title="Hard Break"
         className={`button-item ${"disactive"}`}
         onClick={() => editor.chain().focus().setHardBreak().run()}>
         <BsFillFileEarmarkBreakFill />
       </button>
-      
-      <div className="divider"></div>
-      
-      <button
-        title="Undo"
-        className={`button-item ${"disactive"}`}
-        onClick={() => editor.chain().focus().undo().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .undo()
-            .run()
-        }
-      >
-        <FaArrowRotateLeft />
-      </button>
-      <button
-        title="Redo"
-        className={`button-item ${"disactive"}`}
-        onClick={() => editor.chain().focus().redo().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .redo()
-            .run()
-        }
-      >
-        <FaArrowRotateRight />
-      </button>
+
+      {/* <div className="divider"></div> */}
+      <div className="absolute" style={{ top: "-40px", right: "0" }}>
+        <button
+          title="Undo"
+          className={`button-item ${"disactive"}`}
+          onClick={() => editor.chain().focus().undo().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .undo()
+              .run()
+          }
+        >
+          <FaArrowRotateLeft />
+        </button>
+        <button
+          title="Redo"
+          className={`button-item ${"disactive"}`}
+          onClick={() => editor.chain().focus().redo().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .redo()
+              .run()
+          }
+        >
+          <FaArrowRotateRight />
+        </button>
+      </div>
 
     </div>
   )

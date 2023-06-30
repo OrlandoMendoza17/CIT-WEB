@@ -1,21 +1,17 @@
 .MenuBar{
-  @apply p-2 flex flex-wrap items-center;
+  @apply p-2 flex flex-wrap items-center relative rounded-t-2xl;
   @apply border-sky-800 bg-sky-800;
   
   .divider{
-    @apply bg-sky-600 w-px h-8 mx-4 my-4;
+    @apply bg-sky-600 w-px h-8 mx-4;
   }
   
   button, .divider{
     // @apply mb-8;  
   }
   
-  button{
-    cursor: pointer;
-  }
-  
   .button-item{
-    @apply rounded-lg bg-transparent mx-1 px-4 py-2 text-white hover:bg-sky-700;
+    @apply rounded-lg bg-transparent mx-1 px-4 py-2 text-white bg-sky-800 hover:bg-sky-700 my-2 cursor-pointer;
     &.active{
       @apply bg-sky-900 text-white;
     }

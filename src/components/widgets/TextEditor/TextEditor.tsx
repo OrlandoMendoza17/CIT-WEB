@@ -8,6 +8,8 @@ import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { lowlight } from 'lowlight/lib/core'
 import MenuBar from './MenuBar'
 import Image from "@tiptap/extension-image"
+import Youtube from '@tiptap/extension-youtube'
+import Link from '@tiptap/extension-link';
 
 import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
@@ -37,6 +39,14 @@ const TextEditor = () => {
       CodeBlockLowlight.configure({
         lowlight,
         languageClassPrefix: 'lenguaje-',
+      }),
+      Youtube.configure({
+        ccLanguage: 'es',
+        interfaceLanguage: 'es',
+      }),
+      Link.configure({
+        protocols: ['mailto'],
+        // openOnClick: false,
       })
     ],
     content: `
@@ -53,9 +63,7 @@ const TextEditor = () => {
       }</code></pre><p>I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.</p><p></p><img src="https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/robert-downey-jr.-improviso-escena-iron-man-decisiva-universo-marvel/138148094-1-esl-ES/Robert-Downey-Jr.-improviso-una-escena-de-Iron-Man-que-fue-decisiva-para-el-Universo-Marvel.jpg"><p></p>
     `,
   })
-
-  console.log("content", editor?.getHTML());
-
+  // editor.commands.toggleLink({ href: 'https://example.com', target: '_blank' })
   return (
     <div>
       <div className="TextEditor">
