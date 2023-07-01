@@ -31,7 +31,7 @@ const Header = ({ position, transparent = false }: Props) => {
     },
     {
       label: "Blog",
-      href: "/blog/post-prueba",
+      href: "/blog/cyberseguridad",
       Icon: <FaMessage size={20} />,
     },
     {
