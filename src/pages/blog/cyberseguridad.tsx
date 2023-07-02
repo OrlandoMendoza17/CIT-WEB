@@ -30,7 +30,7 @@ const cyberseguridad = () => {
           
           <p><strong>¡Inscríbete a través del siguiente <a href="https://forms.gle/b4kFQYXteRmyKPTL7">Formulario!</a>  ✅👈🏻🦉</strong></p>
           
-          <Image width={600} src="https://i.imgur.com/MTolrPw.jpg" alt="banner publicitario" />
+          <img width={600} src="https://i.imgur.com/MTolrPw.jpg" alt="banner publicitario" />
 
           <p>Además, al inscribirte estarás participando por el acceso a una masterclass sobre business intelligence e inteligencia artificial en donde aprenderás a elaborar Dashboards, con la herramienta Google Data Studio y ChatGPT.</p>
           
