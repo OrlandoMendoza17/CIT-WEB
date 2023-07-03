@@ -5,8 +5,14 @@ import Projects from "@/components/pages/Projects";
 import Footer from "@/components/widgets/Footer";
 import Header from "@/components/widgets/Header";
 import Title from "@/components/widgets/Title";
+import supabase from "@/services/api";
+import PostsService from "@/services/posts";
+import { useEffect } from "react";
 
 const Home = () => {
+
+
+
   return (
     <>
       <Title />
@@ -18,7 +24,7 @@ const Home = () => {
         <BestTools />
         🐪 Ola k ase?
       </main>
-      <Footer/>
+      <Footer />
     </>
   )
 }

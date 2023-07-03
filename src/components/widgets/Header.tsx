@@ -3,12 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaUsers, FaDiagramProject, FaMessage, FaPhoneFlip } from "react-icons/fa6";
 import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
 
-
-const types = {
-  relative: "relative",
-  fixed: "md:fixed",
-}
-
 type Props = {
   transparent?: boolean,
   position: "fixed" | "relative"
@@ -31,7 +25,7 @@ const Header = ({ position, transparent = false }: Props) => {
     },
     {
       label: "Blog",
-      href: "/blog/cyberseguridad",
+      href: "/blog/6038926a-c2d1-44d3-a356-166fcfae2956",
       Icon: <FaMessage size={20} />,
     },
     {
@@ -59,7 +53,7 @@ const Header = ({ position, transparent = false }: Props) => {
     const fixed = $header?.className.includes("fixed")
     
     if (fixed) {
-      debugger
+      // debugger
       if ($header) {
         window.addEventListener('scroll', () => {
           if (window.scrollY === TO_OF_THE_PAGE) {
@@ -75,7 +69,7 @@ const Header = ({ position, transparent = false }: Props) => {
   const $navLinks = useRef<HTMLUListElement>(null)
 
   return (
-    <header id="Header" className={`Header ${types[position]} ${transparent && "transparent"} onTop`}>
+    <header id="Header" className={`Header ${position} ${transparent && "transparent"} onTop`}>
       <nav className="">
         {/* Brand */}
         <Link className="navbar-brand" href="/">

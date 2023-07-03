@@ -1,12 +1,9 @@
+import { Post } from '@/services/types/Posts';
 import { howLong } from '../../../utils/parseDate/index';
 import React, { useEffect } from 'react'
 import { FaClock } from "react-icons/fa6";
 
-type Props = {
-  cover?: string,
-  title?: string,
-  created_at?: string,
-}
+type Props = Post
 
 const PostHero = ({
   title = "44 etiquetas HTML que debes conocer",
