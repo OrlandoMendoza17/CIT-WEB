@@ -15,12 +15,12 @@ const Header = ({ position, transparent = false }: Props) => {
   const links = [
     {
       label: "Nosotros",
-      href: "/",
+      href: "/nosotros",
       Icon: <FaUsers size={22} />,
     },
     {
       label: "Proyectos",
-      href: "/",
+      href: "/proyectos",
       Icon: <FaDiagramProject size={22} />,
     },
     {

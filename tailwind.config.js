@@ -18,7 +18,11 @@ module.exports = {
     extend: {
       colors: {
         primary: "#00aaff",
-        secondary: "#232c3d",
+        secondary: {
+          DEFAULT: "#232c3d",
+          dark: "#1c2331",
+          // 700: "#151a25",
+        },
       },
       fontSize: {
         "sm": ["1.2rem"],
