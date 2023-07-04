@@ -1,0 +1,45 @@
+.BlogItem{
+  // display: grid;
+  // gap: 10px;
+  
+  figure{
+    @apply bg-secondary rounded-2xl mb-6;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.2%;
+    
+    img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      // object-position: center;
+    }  
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+  }
+  &__details{
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 15px;
+    
+    img{
+      @apply bg-slate-300 rounded-full p-2;
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+    span{
+      @apply text-base text-slate-800 font-medium;
+      line-height: 2.2rem;
+      display: -webkit-box;
+      max-height: 44px;
+      text-overflow: ellipsis;
+      line-clamp: 2;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+}

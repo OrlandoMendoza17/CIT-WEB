@@ -1,5 +1,5 @@
-import DarkFullscreen from '@/components/template/DarkFullscreen'
 import React from 'react'
+import DarkFullscreen from '@/components/template/DarkFullscreen'
 
 const Nosotros = () => {
   return (

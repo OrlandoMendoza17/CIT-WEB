@@ -1,7 +1,7 @@
 import React from 'react'
 import DarkFullscreen from '@/components/template/DarkFullscreen'
 
-const Proyectos = () => {
+const Contacto = () => {
   return (
     <DarkFullscreen>
       <h1 className="text-primary text-2xl font-bold">
@@ -11,4 +11,4 @@ const Proyectos = () => {
   )
 }
 
-export default Proyectos
+export default Contacto

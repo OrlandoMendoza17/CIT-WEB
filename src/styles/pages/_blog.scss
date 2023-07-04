@@ -1,0 +1,36 @@
+.Blog{
+  @apply px-8 py-12 sm:px-8;
+  
+  min-height: 650px;
+  
+  .main_container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    
+    @screen sm{
+      grid-template-columns: 224px 1fr;
+    }
+    
+    aside{
+      @apply hidden sm:grid gap-4 content-start;
+    }
+  }
+  
+  
+  &__search{
+    @apply pb-12;
+    display: grid;
+    grid-template-columns: minmax(100px, 500px) auto;
+    justify-content: center;
+    
+    input{
+      outline: none;
+    }
+  }
+  &__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+  }
+}

@@ -25,12 +25,12 @@ const Header = ({ position, transparent = false }: Props) => {
     },
     {
       label: "Blog",
-      href: "/blog/6038926a-c2d1-44d3-a356-166fcfae2956",
+      href: "/blog",
       Icon: <FaMessage size={20} />,
     },
     {
       label: "Contacto",
-      href: "/",
+      href: "/contacto",
       Icon: <FaPhoneFlip size={17} />,
     },
   ]

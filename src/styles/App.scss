@@ -1,11 +1,15 @@
 @import "./libs/globals";
 
+// Pages
+@import "./pages/blog";
+
 // Components - Pages
 @import "../components/pages/styles/Hero";
 @import "../components/pages/styles/MainDescriptions";
 @import "../components/pages/styles/Projects";
 @import "../components/pages/Blog/styles/PostHero";
 @import "../components/pages/Blog/styles/PostContent";
+@import "../components/pages/Blog/styles/BlogItem";
 
 // Components - Widgets
 @import "../components/widgets/styles/Header";
