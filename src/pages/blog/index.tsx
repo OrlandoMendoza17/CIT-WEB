@@ -26,29 +26,29 @@ const Blog = () => {
     {
       id: 1,
       name: "HTML",
-      image: "https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_html_icon_130541.png",
+      image: "https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/public/categories/file_type_html_icon_130541.png",
       // image: "https://cdn.icon-icons.com/icons2/2415/PNG/512/html_original_wordmark_logo_icon_146478.png",
     },
     {
       id: 2,
       name: "CSS",
-      image: "https://midu.dev/images/tags/css.png",
+      image: "https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/public/categories/css%20-%20copia.png",
       // image: "https://cdn.icon-icons.com/icons2/2415/PNG/512/css_original_wordmark_logo_icon_146576.png",
     },
     {
       id: 3,
       name: "JavaScript",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+      image: "https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/public/categories/JavaScript-logo.png",
     },
     {
       id: 4,
       name: "TypeScript",
-      image: "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3254474/typescript-icon-icon-md.png",
+      image: "https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/public/categories/image_processing20210621-24504-1kzza9x.png",
     },
     {
       id: 5,
       name: "React.js",
-      image: "https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png",
+      image: "https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/public/categories/react_original_logo_icon_146374.png",
     },
   ]
 

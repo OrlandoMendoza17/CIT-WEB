@@ -1,0 +1,14 @@
+.Input{
+  span{
+    @apply font-medium mb-2 block;
+  }
+  input{
+    @apply py-2 px-4 w-full;
+    font-size: 1.6rem !important;
+    outline: none;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid rgb(127, 127, 127);
+  }
+}

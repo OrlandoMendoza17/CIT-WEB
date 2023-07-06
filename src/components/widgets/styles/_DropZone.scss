@@ -1,0 +1,19 @@
+.DropZone{
+  @apply px-10 py-8 rounded-2xl text-base;
+  @apply border-slate-300 border-dashed border-4;
+  margin-top: 20px;
+  transition: .3s;
+  // height: 200px;
+  
+  &.draggingOver{
+    @apply border-cyan-500 bg-slate-200;
+  }
+  
+  img{
+    width: 50px;
+  }
+  
+  button{
+    @apply text-white hover:bg-sky-700 bg-sky-800 rounded-lg px-4 py-2;
+  }
+}
