@@ -2,6 +2,7 @@ import PostContent from '@/components/pages/Blog/PostContent'
 import PostHero from '@/components/pages/Blog/PostHero'
 import Footer from '@/components/widgets/Footer'
 import Header from '@/components/widgets/Header'
+import useSession from '@/hooks/useSession'
 import PostsService from '@/services/posts'
 import { Post } from '@/services/types/Posts'
 import { useRouter } from 'next/router'
@@ -12,7 +13,8 @@ const service = new PostsService()
 const PostArticle = () => {
 
   const router = useRouter()
-
+  const [session] = useSession()
+  
   const [post, setPost] = useState<Post>({
     id: "",
     title: "",
@@ -43,10 +45,9 @@ const PostArticle = () => {
     })()
   }, [router])
 
-
   return (
     <>
-      <Header position="relative" />
+      <Header session={session} position="relative" />
       <main>
         <PostHero {...post} />
         <PostContent  {...post} />

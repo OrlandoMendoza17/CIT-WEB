@@ -1,0 +1,96 @@
+.Signup {
+  @apply bg-secondary-dark text-primary;
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100%;
+  overflow: hidden;
+  // section
+  
+  a{
+    @apply text-slate-400 hover:text-primary;
+  }
+  
+  @screen md {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-height: 594px) {
+    height: calc(100vh - 123px);
+  }
+  
+  &__cover {
+    @apply bg-white hidden md:block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+  &__layout {
+    @apply px-8 py-16 md:p-8;
+    overflow-x: hidden;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    // grid-template-columns: 1fr;
+  }
+
+  &__main-container{
+    @apply pb-16;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    
+    @screen lg{
+      width: 80%;
+    }
+    
+    &::-webkit-scrollbar{
+      opacity: 0;
+    }
+    
+    button{
+      @apply p-4 w-full bg-secondary rounded-xl font-bold;
+      @apply hover:bg-primary hover:text-white;
+
+      @apply flex justify-center gap-4 items-center;
+
+      transition: .2s;
+      
+      &.google{
+        @apply hover:bg-white hover:text-black;
+      }
+    }
+    
+    .Signup__social{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      
+      @screen xs{
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @screen md{
+        grid-template-columns: 1fr;
+      }
+      @screen lg{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .Signup__form {
+      @apply mb-8;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      
+      span{
+        @apply font-normal;
+      }
+      input {
+        @apply text-black m-0;
+      }
+    }
+  }
+}

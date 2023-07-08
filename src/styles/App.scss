@@ -2,6 +2,11 @@
 
 // Pages
 @import "./pages/blog";
+@import "./pages/login";
+@import "./pages/signup";
+
+// Components - Template
+@import "../components/template/styles/DarkFullscreen";
 
 // Components - Pages
 @import "../components/pages/styles/Hero";

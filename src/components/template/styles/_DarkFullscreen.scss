@@ -1,0 +1,4 @@
+.DarkFullscreen {
+  @apply bg-secondary-dark flex flex-col justify-center items-center px-8 text-primary;
+  height: calc(100vh - 123px);
+}

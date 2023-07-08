@@ -8,6 +8,7 @@ import Input from '@/components/widgets/Input'
 import useTextEditor from '@/hooks/useTextEditor'
 import { PostCreate } from '@/services/types/Posts'
 import PostsService from '@/services/posts'
+import useSession from '@/hooks/useSession'
 
 const filesAllowed = [
   {
@@ -74,20 +75,24 @@ const Create = () => {
       debugger
       await service.create(post)
       alert("Se ha creado con exito el nuevo post")
-    }else{
+    } else {
       alert("Falta el cover")
     }
   }
-  
+
+  const [session] = useSession()
 
   return (
     <>
-      <Header position="relative" transparent={false} />
+      <Header session={session} position="relative" transparent={false} />
       <main>
         <section className="PostContent">
           <form onSubmit={handleSubmit} className="main_container px-4">
-            <h1 className="font-bold !text-2xl py-8">Nuevo Post</h1>
-            <button className="bg-primary rounded-lg py-2 px-4" type="submit">Crear</button>
+            <div className="flex justify-between items-center">
+              <h1 className="font-bold !text-2xl py-8">Nuevo Post</h1>
+              <button className="bg-primary hover:bg-sky-300 rounded-lg py-2 px-4" type="submit">Crear</button>
+            </div>
+
             <Input id="title" placeholder="Título" />
             <div className="mb-20 !text-base">
               {
@@ -109,7 +114,7 @@ const Create = () => {
             <TextEditor editor={editor} />
             {
               editor &&
-              <div className="border border-primary" dangerouslySetInnerHTML={{__html: editor?.getHTML()}}></div>
+              <div className="border border-primary" dangerouslySetInnerHTML={{ __html: editor?.getHTML() }}></div>
             }
           </form >
         </section>
@@ -118,7 +123,5 @@ const Create = () => {
     </>
   )
 }
-
-
 
 export default Create

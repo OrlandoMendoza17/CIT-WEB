@@ -1,16 +1,19 @@
 import React, { ReactNode } from 'react'
 import Header from '@/components/widgets/Header'
 import Footer from '@/components/widgets/Footer'
+import useSession from '@/hooks/useSession'
 
 type Props = {
+  alignCenter?: boolean,
   children: ReactNode
 }
 
-const DarkFullscreen = ({ children }: Props) => {
+const DarkFullscreen = ({ alignCenter = true, children }: Props) => {
+  const [session] = useSession()
   return (
     <>
-      <Header position="relative" />
-      <main className='bg-secondary-dark text-primary flex flex-col justify-center items-center px-8' style={{ height: "calc(100vh - 123px)" }}>
+      <Header session={session} position="relative" />
+      <main className={`DarkFullscreen`}>
         {children}
       </main>
       <Footer />

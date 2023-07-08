@@ -1,57 +1,94 @@
+import supabase from '@/services/api';
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { FaUsers, FaDiagramProject, FaMessage, FaPhoneFlip } from "react-icons/fa6";
 import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
+import { Session } from "@supabase/gotrue-js/src/lib/types"
+import { useRouter } from 'next/router';
+import useSession from '@/hooks/useSession';
 
-type Props = {
+interface Props {
   transparent?: boolean,
-  position: "fixed" | "relative"
+  position: "fixed" | "relative",
+  session?: Session | null
 }
 
-const Header = ({ position, transparent = false }: Props) => {
+const links = [
+  {
+    label: "Nosotros",
+    href: "/nosotros",
+    Icon: <FaUsers size={22} />,
+  },
+  {
+    label: "Proyectos",
+    href: "/proyectos",
+    Icon: <FaDiagramProject size={22} />,
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+    Icon: <FaMessage size={20} />,
+  },
+  {
+    label: "Contacto",
+    href: "/contacto",
+    Icon: <FaPhoneFlip size={17} />,
+  },
+]
+
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/citunitec/",
+    Icon: FaInstagram,
+  },
+  {
+    href: "https://twitter.com/CitUnitec2015",
+    Icon: FaTwitter,
+  },
+]
+
+const pathNotToRenderWhenSignedUp = ["/auth/login", "/auth/signup"]
+
+
+const Header = ({ session = null, position, transparent = false }: Props) => {
 
   const [opened, setOpened] = useState<boolean>(false)
 
-  const links = [
-    {
-      label: "Nosotros",
-      href: "/nosotros",
-      Icon: <FaUsers size={22} />,
-    },
-    {
-      label: "Proyectos",
-      href: "/proyectos",
-      Icon: <FaDiagramProject size={22} />,
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-      Icon: <FaMessage size={20} />,
-    },
-    {
-      label: "Contacto",
-      href: "/contacto",
-      Icon: <FaPhoneFlip size={17} />,
-    },
-  ]
+  const router = useRouter()
 
-  const socialLinks = [
-    {
-      href: "https://www.instagram.com/citunitec/",
-      Icon: FaInstagram,
-    },
-    {
-      href: "https://twitter.com/CitUnitec2015",
-      Icon: FaTwitter,
-    },
-  ]
+  // const [session, setSession] = useState<Session | null>()
+  const [triggeredEvent, setTriggeredEvent] = useState<boolean>(false)
+
+  const verifyPath = (paths: string[]): boolean => {
+    const verified = !(paths.find(path => {
+      return router.pathname.includes(path)
+    }))
+    return verified;
+  }
+  
+  // useEffect(() => {
+  //   (async () => {
+  //     console.log('router', router)
+  //     debugger
+
+  //     supabase.auth.onAuthStateChange((event, session) => {
+  //       if (session) {
+  //         setSession(session)
+  //       }
+  //       console.log('session', session)
+  //       console.log('event', event)
+  //       setTriggeredEvent(true)
+  //     })
+
+  //   })()
+  // }, [])
 
   useEffect(() => {
     const TO_OF_THE_PAGE = 0
     const $header = document.getElementById('Header')
     const style = "onTop"
     const fixed = $header?.className.includes("fixed")
-    
+
     if (fixed) {
       // debugger
       if ($header) {
@@ -65,6 +102,11 @@ const Header = ({ position, transparent = false }: Props) => {
       }
     }
   }, [])
+
+  const handleSignOut = () => {
+    supabase.auth.signOut()
+    // setSession(null)
+  }
 
   const $navLinks = useRef<HTMLUListElement>(null)
 
@@ -100,6 +142,18 @@ const Header = ({ position, transparent = false }: Props) => {
               </li>
             )
           }
+          <li>
+            {
+              (session) ?
+                <button onClick={handleSignOut}>
+                  Cerrar Sesión
+                </button>
+                :
+                <Link href="/auth/login">
+                  Iniciar Sesión
+                </Link>
+            }
+          </li>
         </ul>
 
         <button onClick={() => setOpened(!opened)} className="burger-button">

@@ -2,6 +2,7 @@ import BlogItem from '@/components/pages/Blog/BlogItem'
 import CategoryItem from '@/components/pages/Blog/CategoryItem'
 import Footer from '@/components/widgets/Footer'
 import Header from '@/components/widgets/Header'
+import useSession from '@/hooks/useSession'
 import PostsService from '@/services/posts'
 import { Post } from '@/services/types/Posts'
 import React, { useEffect, useState } from 'react'
@@ -11,7 +12,8 @@ const service = new PostsService()
 const Blog = () => {
 
   const [posts, setPosts] = useState<Post[]>([])
-
+  const [session] = useSession()
+  
   useEffect(() => {
     (async () => {
       const data = await service.getAll()
@@ -54,7 +56,7 @@ const Blog = () => {
 
   return (
     <>
-      <Header position="relative" />
+      <Header session={session} position="relative" />
       <main className="Blog">
         <div className="main_container">
           <aside>
