@@ -2,6 +2,8 @@ import { Post } from '@/services/types/Posts';
 import { howLong } from '../../../utils/parseDate/index';
 import React, { useEffect } from 'react'
 import { FaClock } from "react-icons/fa6";
+import supabase from '@/services/api';
+import { getImageUrl } from '@/utils';
 
 type Props = Post
 
@@ -11,12 +13,27 @@ const PostHero = ({
   created_at = "2023-07-01T22:00:00Z",
 }: Props) => {
 
-  // useEffect(() => {
-  // }, [])
-  
-  
+  useEffect(() => {
+    // Use the JS library to download a file.
+    (async () => {
+      console.log('cover', cover)
+      if (cover) {
+        const { data, error } = await supabase.storage.from('post-covers').download(cover)
+        
+        if (data) {
+          const domString = URL.createObjectURL(data)
+          console.log('domString', domString)
+        }
+        
+        console.log('data', data)
+        console.log('error', error)
+      }
+    })()
+
+  }, [])
+
   return (
-    <section className="PostHero" style={{ backgroundImage: `url(${cover})` }}>
+    <section className="PostHero" style={{ backgroundImage: `url(${getImageUrl(cover)})` }}>
       <div className="main_container">
         <h1>{title}</h1>
         <div className="post_info">
@@ -38,3 +55,6 @@ const PostHero = ({
 }
 
 export default PostHero
+
+// https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/post-covers/tech_neoncircuitboard_857021704_medium_lc5h05.jfif
+// https://xwuwegzblgkbpchmqnmw.supabase.co/storage/v1/object/public/post-covers/tech_neoncircuitboard_857021704_medium_lc5h05.jfif

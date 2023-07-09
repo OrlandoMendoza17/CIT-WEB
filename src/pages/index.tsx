@@ -12,15 +12,15 @@ import { useEffect } from "react";
 
 const Home = () => {
 
-  useEffect(() => {
-    (async () => {
-      const { data, error } = await supabase.auth.getSession()
-      console.log('data', data)
-      console.log('error', error)
-    })()
-  }, [])
+  // useEffect(() => {
+  //   (async () => {
+  //     const { data, error } = await supabase.auth.getSession()
+  //     console.log('data', data)
+  //     console.log('error', error)
+  //   })()
+  // }, [])
 
-  const [session] = useSession()
+  const [session] = useSession({ ProtectRoute: true })
   
   return (
     <>

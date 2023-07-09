@@ -13,7 +13,7 @@ const service = new PostsService()
 const PostArticle = () => {
 
   const router = useRouter()
-  const [session] = useSession()
+  const [session] = useSession({})
   
   const [post, setPost] = useState<Post>({
     id: "",

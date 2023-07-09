@@ -8,6 +8,15 @@
   @apply py-8 px-8;
   min-height: 250px;
   outline: none;
+  
+  p.is-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+  
   code {
     background-color: rgba(#616161, 0.1);
     color: #616161;

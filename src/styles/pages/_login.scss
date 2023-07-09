@@ -13,7 +13,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  @media screen and (min-height: 594px) {
+  @media screen and (min-height: 600px) {
     height: calc(100vh - 123px);
   }
   
@@ -29,9 +29,12 @@
     overflow-x: auto;
     
     display: grid;
-    align-content: center;
     justify-items: center;
     // grid-template-columns: 1fr;
+    
+    @media screen and (min-height: 700px) {
+      align-content: center;
+    }
   }
 
   &__main-container{

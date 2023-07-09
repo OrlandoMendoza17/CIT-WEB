@@ -12,7 +12,7 @@ const service = new PostsService()
 const Blog = () => {
 
   const [posts, setPosts] = useState<Post[]>([])
-  const [session] = useSession()
+  const [session] = useSession({})
   
   useEffect(() => {
     (async () => {

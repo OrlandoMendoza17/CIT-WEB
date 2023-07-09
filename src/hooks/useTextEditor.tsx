@@ -2,13 +2,14 @@ import React, { useCallback } from 'react'
 import { Color } from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
 import ListItem from '@tiptap/extension-list-item'
-import { EditorContent, useEditor } from '@tiptap/react'
+import { useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { lowlight } from 'lowlight/lib/core'
 import Image from "@tiptap/extension-image"
 import Youtube from '@tiptap/extension-youtube'
 import Link from '@tiptap/extension-link';
+import Placeholder from '@tiptap/extension-placeholder'
 
 import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
@@ -20,8 +21,14 @@ lowlight.registerLanguage('css', css)
 lowlight.registerLanguage('js', js)
 lowlight.registerLanguage('ts', ts)
 
-const useTextEditor = (content: string) => {
+type Props = {
+  content: string,
+  editable?: boolean
+}
+
+const useTextEditor = ({ content, editable = true }: Props) => {
   const editor = useEditor({
+    editable,
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
       StarterKit.configure({
@@ -46,7 +53,10 @@ const useTextEditor = (content: string) => {
       Link.configure({
         protocols: ['mailto'],
         // openOnClick: false,
-      })
+      }),
+      Placeholder.configure({
+        placeholder: 'Write something …',
+      }),
     ],
     content,
     // content: `
@@ -63,7 +73,7 @@ const useTextEditor = (content: string) => {
     //   }</code></pre><p>I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.</p><p></p><img src="https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/robert-downey-jr.-improviso-escena-iron-man-decisiva-universo-marvel/138148094-1-esl-ES/Robert-Downey-Jr.-improviso-una-escena-de-Iron-Man-que-fue-decisiva-para-el-Universo-Marvel.jpg"><p></p>
     // `,
   })
-  
+
   return editor;
 }
 

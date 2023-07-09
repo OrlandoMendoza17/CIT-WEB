@@ -1,4 +1,5 @@
 import { Post } from '@/services/types/Posts'
+import { getImageUrl } from '@/utils'
 import { howLong } from '@/utils/parseDate'
 import React from 'react'
 
@@ -9,7 +10,7 @@ const BlogItem = ({ id, title, cover, created_at }: Props) => {
     <article className="BlogItem">
       <a href={`/blog/${id}`}>
         <figure>
-          <img src={cover || ""} alt="" />
+          <img src={getImageUrl(cover) || ""} alt="" />
         </figure>
         <div className="BlogItem__details">
           <div>

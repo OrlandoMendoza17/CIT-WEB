@@ -9,7 +9,7 @@ type Props = {
 }
 
 const DarkFullscreen = ({ alignCenter = true, children }: Props) => {
-  const [session] = useSession()
+  const [session] = useSession({})
   return (
     <>
       <Header session={session} position="relative" />

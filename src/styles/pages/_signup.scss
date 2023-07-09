@@ -14,7 +14,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  @media screen and (min-height: 594px) {
+  @media screen and (min-height: 600px) {
     height: calc(100vh - 123px);
   }
   
@@ -30,16 +30,17 @@
     @apply px-8 py-16 md:p-8;
     overflow-x: hidden;
     display: grid;
-    align-content: center;
     justify-items: center;
+    
+    @media screen and (min-height: 700px) {
+      align-content: center;
+    }
+    
     // grid-template-columns: 1fr;
   }
 
   &__main-container{
-    @apply pb-16;
     width: 100%;
-    height: 100%;
-    overflow-x: auto;
     
     @screen lg{
       width: 80%;
