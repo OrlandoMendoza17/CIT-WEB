@@ -13,6 +13,8 @@ const PostHero = ({
   created_at = "2023-07-01T22:00:00Z",
 }: Props) => {
 
+  console.log('cover', cover)
+  
   return (
     <section className="PostHero" style={{ backgroundImage: `url(${getImageUrl(cover)})` }}>
       <div className="main_container">

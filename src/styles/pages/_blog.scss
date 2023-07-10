@@ -9,7 +9,8 @@
     gap: 20px;
     
     @screen sm{
-      grid-template-columns: 224px 1fr;
+      grid-template-columns: 1fr;
+      // grid-template-columns: 224px 1fr;
     }
     
     aside{

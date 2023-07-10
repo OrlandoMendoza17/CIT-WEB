@@ -57,7 +57,7 @@ const Login = () => {
           message: "Has iniciado sesión correctamente ✅"
         })
         console.log(data)
-        setTimeout(() => router.push("/"), 1000)
+        setTimeout(() => router.push("/dashboard"), 1000)
       }else{
         if(error.message.includes("Invalid login credentials")){
           handleNotification.open({

@@ -60,21 +60,21 @@ const Blog = () => {
       <main className="Blog">
         <div className="main_container">
           <aside>
-            {
+            {/* {
               categories.map((category, i) =>
                 <CategoryItem key={`category-item-${i}`} {...category}/>
               )
-            }
+            } */}
           </aside>
           <section>
-            <div className="Blog__search">
+            {/* <div className="Blog__search">
               <label htmlFor="search" className="p-4 rounded-l-full border border-slate-300">
                 <input id="search" className="w-full px-4" placeholder="Buscar" type="text" />
               </label>
               <button className="py-4 px-8 bg-slate-200 rounded-r-full">
                 🔍
               </button>
-            </div>
+            </div> */}
             <div className="Blog__grid">
               {
                 posts.map((post, i) =>

@@ -1,0 +1,26 @@
+.Dashboard {
+  @apply p-8;
+
+  display: grid;
+  grid-template-columns: minmax(auto, 768px);
+  justify-content: right;
+  gap: 20px;
+
+  // @screen sm {
+  //   grid-template-columns: 224px 1fr;
+  // }
+
+  // aside {
+  //   @apply hidden sm:grid gap-4 content-start;
+  // }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 15px;
+
+    @screen 2xs {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+}

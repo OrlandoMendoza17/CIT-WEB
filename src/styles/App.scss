@@ -4,6 +4,7 @@
 @import "./pages/blog";
 @import "./pages/login";
 @import "./pages/signup";
+@import "./pages/dashboard.scss";
 
 // Components - Template
 @import "../components/template/styles/DarkFullscreen";
@@ -15,6 +16,7 @@
 @import "../components/pages/Blog/styles/PostHero";
 @import "../components/pages/Blog/styles/PostContent";
 @import "../components/pages/Blog/styles/BlogItem";
+@import "../components/pages/dashboard/styles/PostItem";
 
 // Components - Widgets
 @import "../components/widgets/styles/Input";
