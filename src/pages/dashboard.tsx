@@ -8,7 +8,7 @@ import { Post } from '@/services/types/Posts'
 import Link from 'next/link'
 import PostItem from '@/components/pages/dashboard/PostItem'
 
-const dashboard = () => {
+const Dashboard = () => {
 
   const [session] = useSession({ ProtectRoute: true })
   const [posts, setPosts] = useState<Post[]>([])
@@ -52,4 +52,4 @@ const dashboard = () => {
   )
 }
 
-export default dashboard
+export default Dashboard

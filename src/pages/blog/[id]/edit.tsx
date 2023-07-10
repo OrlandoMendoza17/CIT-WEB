@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react'
 
 const service = new PostsService()
 
-const edit = () => {
+const Edit = () => {
 
   const router = useRouter()
   const [session] = useSession({ ProtectRoute: true })
@@ -60,4 +60,4 @@ const edit = () => {
   )
 }
 
-export default edit
+export default Edit

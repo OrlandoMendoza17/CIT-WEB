@@ -58,11 +58,11 @@ const PostEditor = ({ postEdition = false, post, session }: Props) => {
   useEffect(() => {
     editor?.commands.setContent(body)
   }, [body])
-
-  if (postEdition) {
+  
+ 
     useEffect(() => {
       (async () => {
-        if (cover) {
+        if (postEdition && cover) {
           debugger
           const response = await fetch(getImageUrl(cover))
           const blob = await response.blob()
@@ -77,7 +77,7 @@ const PostEditor = ({ postEdition = false, post, session }: Props) => {
         }
       })()
     }, [cover])
-  }
+
 
   const handleFiles = (files: FileList) => {
 
