@@ -12,6 +12,8 @@ import useSession from '@/hooks/useSession'
 import supabase from '@/services/api'
 import { Session } from "@supabase/gotrue-js/src/lib/types"
 import { useRouter } from 'next/router'
+import useNotification from '@/hooks/useNotification'
+import NotificationModal from '@/components/widgets/NotificationModal'
 
 const filesAllowed = [
   {
@@ -36,6 +38,12 @@ const Create = () => {
   const [domString, setDomString] = useState<string>("")
 
   const [file, setFile] = useState<File | null>(null)
+  const [session] = useSession({ ProtectRoute: true })
+
+  const router = useRouter()
+
+  const notificationProps = useNotification()
+  const { notification, handleNotification } = notificationProps
 
   const editor = useTextEditor({
     content: ""
@@ -73,17 +81,18 @@ const Create = () => {
         title: form.get("title") as string,
         body: editor?.getHTML() as string,
         cover,
-        user_id: "8ab34820-17d6-4112-ba97-d9d107013c6b"
+        user_id: session?.user.id as string
       }
       debugger
       await service.create(post)
       alert("Se ha creado con exito el nuevo post")
+
+      setTimeout(() => router.push("/blog"), 3000);
+
     } else {
       alert("Falta el cover")
     }
   }
-
-  const [session] = useSession({ ProtectRoute: true })
 
   return (
     <>
@@ -122,6 +131,7 @@ const Create = () => {
             </section>
           </main>
           <Footer />
+          <NotificationModal {...notificationProps} />
         </>
       }
     </>

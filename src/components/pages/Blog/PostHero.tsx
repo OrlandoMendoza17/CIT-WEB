@@ -13,25 +13,6 @@ const PostHero = ({
   created_at = "2023-07-01T22:00:00Z",
 }: Props) => {
 
-  useEffect(() => {
-    // Use the JS library to download a file.
-    (async () => {
-      console.log('cover', cover)
-      if (cover) {
-        const { data, error } = await supabase.storage.from('post-covers').download(cover)
-        
-        if (data) {
-          const domString = URL.createObjectURL(data)
-          console.log('domString', domString)
-        }
-        
-        console.log('data', data)
-        console.log('error', error)
-      }
-    })()
-
-  }, [])
-
   return (
     <section className="PostHero" style={{ backgroundImage: `url(${getImageUrl(cover)})` }}>
       <div className="main_container">

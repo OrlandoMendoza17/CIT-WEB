@@ -18,7 +18,7 @@ const PostArticle = () => {
   const [post, setPost] = useState<Post>({
     id: "",
     title: "",
-    body: "",
+    body: "<p></p>",
     cover: "",
     user_id: "",
     created_at: "",

@@ -3,6 +3,6 @@ export const stringListFrom = (array: string[]): string => {
   return formatter.format(array)
 }
 
-export const getImageUrl = (cover: string | null = ""): string => {
-  return `${process.env.NEXT_PUBLIC_API}/storage/v1/object/public/post-covers/${cover}`
+export const getImageUrl = (cover: string | null): string => {
+  return cover ? `${process.env.NEXT_PUBLIC_API}/storage/v1/object/public/post-covers/${cover}` : ""
 }

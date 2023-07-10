@@ -6,6 +6,8 @@ import { FaInstagram, FaTwitter, FaCode, FaXmark } from "react-icons/fa6";
 import { Session } from "@supabase/gotrue-js/src/lib/types"
 import { useRouter } from 'next/router';
 import useSession from '@/hooks/useSession';
+import useNotification from '@/hooks/useNotification';
+import NotificationModal from './NotificationModal';
 
 interface Props {
   transparent?: boolean,
@@ -55,33 +57,8 @@ const Header = ({ session = null, position, transparent = false }: Props) => {
   const [opened, setOpened] = useState<boolean>(false)
 
   const router = useRouter()
-
-  // const [session, setSession] = useState<Session | null>()
-  const [triggeredEvent, setTriggeredEvent] = useState<boolean>(false)
-
-  const verifyPath = (paths: string[]): boolean => {
-    const verified = !(paths.find(path => {
-      return router.pathname.includes(path)
-    }))
-    return verified;
-  }
-  
-  // useEffect(() => {
-  //   (async () => {
-  //     console.log('router', router)
-  //     debugger
-
-  //     supabase.auth.onAuthStateChange((event, session) => {
-  //       if (session) {
-  //         setSession(session)
-  //       }
-  //       console.log('session', session)
-  //       console.log('event', event)
-  //       setTriggeredEvent(true)
-  //     })
-
-  //   })()
-  // }, [])
+  const notificationProps = useNotification()
+  const { notification, handleNotification } = notificationProps
 
   useEffect(() => {
     const TO_OF_THE_PAGE = 0
@@ -103,69 +80,86 @@ const Header = ({ session = null, position, transparent = false }: Props) => {
     }
   }, [])
 
-  const handleSignOut = () => {
-    supabase.auth.signOut()
-    // setSession(null)
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut()
+    console.log("Hi there!")
+    
+    if(!error){
+      handleNotification.open({
+        type: "success",
+        title: "Cierre de sesión",
+        message: "Se ha cerrado sesión satisfactoriamente"
+      })
+    }else{
+      handleNotification.open({
+        type: "danger",
+        title: "Cierre de sesión",
+        message: "Ha ocurrido un error con el cierre de sesión"
+      })
+    }
   }
 
   const $navLinks = useRef<HTMLUListElement>(null)
 
   return (
-    <header id="Header" className={`Header ${position} ${transparent && "transparent"} onTop`}>
-      <nav className="">
-        {/* Brand */}
-        <Link className="navbar-brand" href="/">
-          <img src="https://i.imgur.com/Rn0NwIh.png" alt="logo de cit" />
-        </Link>
-        {/* Left */}
+    <>
+      <header id="Header" className={`Header ${position} ${transparent && "transparent"} onTop`}>
+        <nav className="">
+          {/* Brand */}
+          <Link className="navbar-brand" href="/">
+            <img src="https://i.imgur.com/Rn0NwIh.png" alt="logo de cit" />
+          </Link>
+          {/* Left */}
 
-        <ul ref={$navLinks} className={`nav-links ${opened && "opened"}`}>
-          {
-            links.map(({ label, href, Icon }, i) =>
-              <li key={`nav-links-${i}`} className="nav-item">
-                <Link href={href}>
-                  {Icon}<span>{label}</span>
-                </Link>
-              </li>
-            )
-          }
-        </ul>
-
-        {/* Redes Sociales, No se Colapsa  */}
-        <ul className="nav-social-links">
-          {
-            socialLinks.map(({ href, Icon }, i) =>
-              <li key={`nav-social-links-${i}`} className="nav-item">
-                <Link href={href}>
-                  <Icon size={18} />
-                </Link>
-              </li>
-            )
-          }
-          <li>
+          <ul ref={$navLinks} className={`nav-links ${opened && "opened"}`}>
             {
-              (session) ?
-                <button onClick={handleSignOut}>
-                  Cerrar Sesión
-                </button>
-                :
-                <Link href="/auth/login">
-                  Iniciar Sesión
-                </Link>
+              links.map(({ label, href, Icon }, i) =>
+                <li key={`nav-links-${i}`} className="nav-item">
+                  <Link href={href}>
+                    {Icon}<span>{label}</span>
+                  </Link>
+                </li>
+              )
             }
-          </li>
-        </ul>
+          </ul>
 
-        <button onClick={() => setOpened(!opened)} className="burger-button">
-          {
-            opened ?
-              <FaXmark size={20} />
-              :
-              <FaCode size={20} />
-          }
-        </button>
-      </nav>
-    </header>
+          {/* Redes Sociales, No se Colapsa  */}
+          <ul className="nav-social-links">
+            {
+              socialLinks.map(({ href, Icon }, i) =>
+                <li key={`nav-social-links-${i}`} className="nav-item">
+                  <Link href={href}>
+                    <Icon size={18} />
+                  </Link>
+                </li>
+              )
+            }
+            <li>
+              {
+                (session) ?
+                  <button onClick={handleSignOut}>
+                    Cerrar Sesión
+                  </button>
+                  :
+                  <Link href="/auth/login">
+                    Iniciar Sesión
+                  </Link>
+              }
+            </li>
+          </ul>
+
+          <button onClick={() => setOpened(!opened)} className="burger-button">
+            {
+              opened ?
+                <FaXmark size={20} />
+                :
+                <FaCode size={20} />
+            }
+          </button>
+        </nav>
+      </header>
+      <NotificationModal {...notificationProps} />
+    </>
   )
 }
 

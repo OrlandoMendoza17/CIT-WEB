@@ -26,7 +26,7 @@ type Props = {
   editable?: boolean
 }
 
-const useTextEditor = ({ content, editable = true }: Props) => {
+const useTextEditor = ({ content = "", editable = true }: Props) => {
   const editor = useEditor({
     editable,
     extensions: [
@@ -73,7 +73,6 @@ const useTextEditor = ({ content, editable = true }: Props) => {
     //   }</code></pre><p>I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.</p><p></p><img src="https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/robert-downey-jr.-improviso-escena-iron-man-decisiva-universo-marvel/138148094-1-esl-ES/Robert-Downey-Jr.-improviso-una-escena-de-Iron-Man-que-fue-decisiva-para-el-Universo-Marvel.jpg"><p></p>
     // `,
   })
-
   return editor;
 }
 

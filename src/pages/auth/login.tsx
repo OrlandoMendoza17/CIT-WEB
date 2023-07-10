@@ -9,6 +9,8 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa6'
 import { useRouter } from 'next/router'
 import supabase from '@/services/api'
+import NotificationModal from '@/components/widgets/NotificationModal'
+import useNotification from '@/hooks/useNotification'
 
 const Login = () => {
 
@@ -17,6 +19,9 @@ const Login = () => {
   // const cover = "https://www.cato.org/sites/cato.org/files/styles/optimized/public/2021-01/GettyImages-1226985345.jpg?itok=f9SULHjG"
 
   const router = useRouter()
+
+  const notificationProps = useNotification()
+  const { notification, handleNotification } = notificationProps
 
   const [state, setState] = useState({
     email: "",
@@ -27,6 +32,16 @@ const Login = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault()
+
+    const handleError = (error: unknown) => {
+      handleNotification.open({
+        type: "danger",
+        title: "Error",
+        message: "Ha ocurrido un error con el inicio de sesión"
+      })
+      console.error(error)
+    }
+
     try {
       setLoading(true)
       console.log(state)
@@ -35,17 +50,30 @@ const Login = () => {
         ...state
       })
 
-      console.log(data)
-      console.log(error)
-
       if (!error) {
-        router.push("/")
+        handleNotification.open({
+          type: "success",
+          title: "Éxito",
+          message: "Has iniciado sesión correctamente ✅"
+        })
+        console.log(data)
+        setTimeout(() => router.push("/"), 1000)
+      }else{
+        if(error.message.includes("Invalid login credentials")){
+          handleNotification.open({
+            type: "danger",
+            title: "Inicio de Sesión",
+            message: "Credenciales de usuario incorrectas"
+          })
+        }else{
+          throw new Error(error.message)
+        }
       }
 
       setLoading(false)
 
     } catch (error) {
-      console.log(error)
+      handleError(error)
       setLoading(false)
     }
   }
@@ -113,6 +141,8 @@ const Login = () => {
             </section>
           </main>
           <Footer />
+
+          <NotificationModal {...notificationProps} />
         </>
       }
     />

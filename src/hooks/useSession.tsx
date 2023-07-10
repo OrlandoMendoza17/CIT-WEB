@@ -42,6 +42,7 @@ const useSession: UseSession = ({ ProtectRoute = false }) => {
       console.log('session', session)
       console.log('event', event)
     })
+    
   }, [])
 
   return [session, setSession]
